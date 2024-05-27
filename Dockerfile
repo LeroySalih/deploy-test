@@ -1,6 +1,10 @@
 # Use the official Node.js image from the Docker Hub
 FROM node:22
 
+ARG SERVER
+ENV SERVER $SERVER
+
+
 # Create and change to the app directory
 WORKDIR /usr/src/app
 
