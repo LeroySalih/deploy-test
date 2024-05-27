@@ -1,0 +1,28 @@
+services:
+  web1:
+    image: deploy-test:0.1
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+
+  web2:
+    image: deploy-test:0.1
+    ports:
+      - "4001:4000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: exampleuser
+      POSTGRES_PASSWORD: examplepass
+      POSTGRES_DB: exampledb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
